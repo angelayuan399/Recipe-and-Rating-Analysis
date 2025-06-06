@@ -9,6 +9,7 @@ The **recipes** dataset had 83,782 rows(recipes) and 12 columns.  The relevant c
 | Column Name     | Description                                                                                      |
 | --------------- | ------------------------------------------------------------------------------------------------ |
 | **`id`**        | Unique identifier for each recipe (integer)                                                      |
+| **`contributer id`**        | User ID who submitted this recipe                                                    |
 | **`name`**      | Recipe name (string)                                                                             |
 | **`minutes`**   | Preparation time in minutes (integer)                                                            |
 | **`n_steps`**   | Number of steps in the recipe instructions (integer)                                             |
@@ -68,17 +69,14 @@ I removed recipes with calories that were 3,000 calories or over. The recommende
 #### 6. Checked for missing values
 I checked if there were missing values in the calories and carbs column. 
 
-This is what the head of the cleaned data frame looks like. Only relevant columns were kept and are shown. 
-
-<!-- markdown content above -->
-
-<div style="overflow-x:auto">
-{{ "{{" }} site.data.tablehtml }}
-</div>
-
-<!-- markdown content below -->
-
-
+### The table below shows the first five unique recipes from the cleaned DataFrame, limited to the relevant columns. 
+| name                               | id     | contributor_id | user_id  | n_steps | n_ingredients | avg_rating | calories | carbs | total_fat | sugar | sodium | protein | saturated_fat |
+|------------------------------------|--------|----------------|----------|---------|---------------|------------|----------|-------|-----------|-------|--------|---------|---------------|
+| 1 brownies in the world best ever  | 333281 | 985201         | 386585   | 10      | 9             | 4.0        | 138.4    | 6.0   | 10.0      | 50.0  | 3.0    | 3.0     | 19.0          |
+| 1 in canada chocolate chip cookies | 453467 | 1848091        | 424680   | 12      | 11            | 5.0        | 595.1    | 26.0  | 46.0      | 211.0 | 22.0   | 13.0    | 51.0          |
+| 412 broccoli casserole             | 306168 | 50969          | 29782    | 6       | 9             | 5.0        | 194.8    | 3.0   | 20.0      | 6.0   | 32.0   | 22.0    | 36.0          |
+| millionaire pound cake             | 286009 | 461724         | 813055   | 7       | 7             | 5.0        | 878.3    | 39.0  | 63.0      | 326.0 | 13.0   | 20.0    | 123.0         |
+| 2000 meatloaf                      | 475785 | 2202916        | 2204364  | 17      | 13            | 5.0        | 267.0    | 2.0   | 30.0      | 12.0  | 12.0   | 29.0    | 48.0          |
 
 
 
