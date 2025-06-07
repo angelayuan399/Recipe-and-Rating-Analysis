@@ -119,9 +119,12 @@ This pivot shows average carbs for each calorie range broken out by rating bin. 
 | 800-1000      | 24.25    | 24.7918  | 23.8127  | 23.5696  |
 | 1000+         | 52.3731  | 49.0117  | 47.2284  | 49.7045  |
 
-One clear trend is that average carbs rise steadily with each higher calorie bin—from just over 2 g in 0–100 cal recipes up to ~24 g in 800–1 000 cal recipes (and ~50 g in the 1 000+ cal “ultra-rich” bin).
+One clear trend is that average carbs rise steadily with each higher calorie bin—from just over 2 g in 0–100 cal recipes up to ~24 g in 800–1,000 cal recipes (and ~50 g in the 1,000+ cal “ultra-rich” bin).
 
 A second, subtler pattern is that within each calorie range, recipes with higher user ratings tend to have slightly lower carb averages. For example in the 300–400 cal bin, 1–2 star recipes average ~11.67 g of carbs, whereas 4–5 star recipes average ~10.96 g, suggesting that, all else equal, leaner-carb dishes get rated more favorably.
 
+## Assessment of Missingness
+### NMAR Analysis
+I believe the rating column is NMAR. In the table, 14 877 recipes have no recorded rating—and that absence isn’t independent of the true rating value. Users self-select whether to rate a recipe, and they’re far more likely to rate dishes they loved or hated than those they felt neutral about. In other words, the probability a rating is missing depends on the unobserved rating itself.
 
 
