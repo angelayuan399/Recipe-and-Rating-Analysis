@@ -5,17 +5,93 @@ Final project for DSC 80
 On Food.com, thousands of recipes come paired with detailed nutrition facts (calories, fat, sugar, sodium, protein, saturated fat, carbohydrates) and user ratings. In my project, I ask: **“Is there a correlation between a recipe’s carbohydrate content (carbs) and its total calories?”** Readers who care about meal planning, weight management, or simple nutritional trade‐offs will find this especially useful—if high‐carb recipes reliably drive up calorie counts, then lowering carbs may be an effective way to reduce calories without digging deeper into ingredient lists.
 
 The **recipes** dataset had 83,782 rows(recipes) and 12 columns.  The relevant columns include:
-| Column Name         | Description                                                                                                                                                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`id`**            | Unique identifier for each recipe (integer)                                                                                                                                                |
-| **`contributor_id`**| User ID who submitted this recipe                                                                                                                                                                                                 |
-| **`name`**          | Recipe name (string)                                                                                                                                                                                                              |
-| **`minutes`**       | Preparation time in minutes (integer)                                                                                                                                                                                             |
-| **`n_steps`**       | Number of steps in the recipe instructions (integer)                                                                                                                                                                              |
-| **`submitted`**     | Date when the recipe was submitted to Food.com (`YYYY-MM-DD` format)                                                                                                                                                              |
-| **`tags`**          | Comma-separated list of Food.com tags (e.g. `dessert`, `vegetarian`, `30-minute meals`) (string)                                                                                                                                  |
-| **`nutrition`**     | A bracketed list with 7 values:<br>1. calories (kcal)<br>2. total_fat (% DV)<br>3. sugar (% DV)<br>4. sodium (% DV)<br>5. protein (% DV)<br>6. saturated_fat (% DV)<br>7. carbohydrates (% DV)<br>Format: `[250, 10, 25, 15, 20, 5, 35]` |
+<!-- Recipes table -->
+<table>
+  <thead>
+    <tr>
+      <th>Column Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>Unique identifier for each recipe (integer)</td>
+    </tr>
+    <tr>
+      <td><code>contributor_id</code></td>
+      <td>User ID who submitted this recipe</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>Recipe name (string)</td>
+    </tr>
+    <tr>
+      <td><code>minutes</code></td>
+      <td>Preparation time in minutes (integer)</td>
+    </tr>
+    <tr>
+      <td><code>n_steps</code></td>
+      <td>Number of steps in the recipe instructions (integer)</td>
+    </tr>
+    <tr>
+      <td><code>submitted</code></td>
+      <td>Date when the recipe was submitted to Food.com (<code>YYYY-MM-DD</code> format)</td>
+    </tr>
+    <tr>
+      <td><code>tags</code></td>
+      <td>Comma-separated list of Food.com tags (e.g. <code>dessert</code>, <code>vegetarian</code>, <code>30-minute meals</code>) (string)</td>
+    </tr>
+    <tr>
+      <td><code>nutrition</code></td>
+      <td>
+        A bracketed list with 7 values:
+        <ol style="margin: 0 0 0 1.2em; padding: 0;">
+          <li>calories (kcal)</li>
+          <li>total_fat (% DV)</li>
+          <li>sugar (% DV)</li>
+          <li>sodium (% DV)</li>
+          <li>protein (% DV)</li>
+          <li>saturated_fat (% DV)</li>
+          <li>carbohydrates (% DV)</li>
+        </ol>
+        Format example: <code>[250, 10, 25, 15, 20, 5, 35]</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+<!-- Interactions table -->
+<table>
+  <thead>
+    <tr>
+      <th>Column Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>user_id</code></td>
+      <td>Unique ID of the user who rated/reviewed (integer)</td>
+    </tr>
+    <tr>
+      <td><code>recipe_id</code></td>
+      <td>ID of the recipe being rated (matches <code>id</code> in <code>RAW_recipes.csv</code>)</td>
+    </tr>
+    <tr>
+      <td><code>date</code></td>
+      <td>Date of the interaction (<code>YYYY-MM-DD</code>)</td>
+    </tr>
+    <tr>
+      <td><code>rating</code></td>
+      <td>Numeric rating (1 to 5 stars)</td>
+    </tr>
+    <tr>
+      <td><code>review</code></td>
+      <td>Optional text review (string; sometimes blank)</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
