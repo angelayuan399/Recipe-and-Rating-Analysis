@@ -197,6 +197,77 @@ Since the p-value (<0.001) is below my significance threshold (0.05), I reject t
 
 
 ## Framing the Problem
+I’m framing this as a **regression** problem because I want to predict a continuous outcome—namely, a recipe’s total calorie count—rather than assign it to discrete categories. My response variable is simply the number of calories (`calories`), since that is the central nutritional measure I care about and something that users often want to estimate before cooking or meal‐planning. To build the model, I only use features that would realistically be known at the moment of prediction: the recipe’s structure (`n_ingredients` and `n_steps`, which are immediately available from the recipe text) and its early user rating (`rating`, which could be gleaned from an initial set of testers or early adopters). I deliberately avoid any post hoc data—like lab‐measured nutrition panels or long‐term popularity metrics—so that the model reflects a practical scenario in which you predict calories from the recipe itself and minimal community feedback.
+
+To evaluate my model’s performance, I focus on **root mean squared error (RMSE)** rather than, say, mean absolute error (MAE) or mean absolute percentage error (MAPE) because it is expressed in calories, making it easy to interpret, and it penalizes larger mistakes more heavily—an important quality if underestimating a high‐calorie dish by several hundred calories could meaningfully mislead someone’s diet plan. I also report **R²** as a secondary metric to indicate the proportion of variability in calorie counts that my model explains, giving a complementary, unit‐free sense of overall fit. 
+
+## Baseline model
+
+I built a **Random Forest regression** pipeline that first standardizes each input feature and then fits a `RandomForestRegressor` (with `random_state=29`). My model uses three predictors: **`n_ingredients`** (the count of ingredients, a quantitative discrete variable), **`n_steps`** (the count of preparation steps, also quantitative discrete), and **`rating`** (the average user rating on a 1–5 scale, which is technically ordinal but treated here as a continuous numeric input). Since all three features are numeric, I did not need any one-hot or ordinal encodings; I simply applied a `StandardScaler` to each column so that the Random Forest could handle them on the same scale.
+
+On a 75/25 train/test split, the model achieved an **R² of 0.0816** and an **RMSE of 333.44 calories** on the held-out test set. In practical terms, it explains only about 8 % of the variation in recipe calories and, on average, misses by over 300 calories. That level of error is too high for reliable calorie estimation—so I would not consider this baseline “good.” It suggests that I need richer features (for example, explicit macro-nutrient information or ingredient weights) or a different modeling approach to capture the true drivers of calorie content.
+
+## Final Model
+### Feature engineering
+I assembled a feature set grounded in how recipes generate calories, combining biochemical and “complexity” signals:
+
+Macronutrient breakdown (sugar, total_fat, saturated_fat, protein, carbs): Calories derive directly from these components (e.g. fat ≈ 9 kcal/g, protein/carbs ≈ 4 kcal/g), so including each lets the model learn their per-gram contributions.
+
+Sodium: While not caloric, sodium often correlates with richer preparations (butter, oils, sauces) that drive up calories.
+
+Recipe complexity (n_ingredients, n_steps): More ingredients or steps typically means more added fats, sugars, or larger portion sizes—proxies for hidden calories.
+
+User rating: Highly-rated recipes may skew toward indulgent, higher-calorie dishes; including rating lets the model adjust for this behavioral signal.
+
+Preparation time (minutes): I quantile-transformed this heavily skewed column so that very short (e.g. microwave-ready) versus very long (multi-stage) recipes are more evenly represented, capturing the intuition that longer cook times often accompany richer, higher-calorie preparations.
+
+By mixing direct nutritional inputs with indicators of portion size and recipe richness, I gave the model multiple complementary “views” on what drives total calories.
+
+
+### Modeling algorithm & hyperparameter selection
+
+Algorithm: I chose a RandomForestRegressor because it naturally captures non-linearities (e.g. diminishing returns from added sugar) and interactions (e.g. high sugar + high fat recipes) without manual feature crosses, and its bagging mechanism guards against overfitting.
+
+Pipeline preprocessing:
+
+StandardScaler on the nine numeric features (all macronutrients, sodium, n_ingredients, n_steps, and rating) so they share a common scale for tree-based splits.
+
+QuantileTransformer (to uniform) on minutes to spread out a heavily right-skewed distribution.
+
+Hyperparameters tuned:
+
+n_estimators ∈ {100, 200}
+
+max_depth ∈ {None, 10}
+
+ I ran a 5-fold GridSearchCV optimizing neg_root_mean_squared_error and refit on the configuration with the lowest RMSE.
+
+Best found: n_estimators=200, max_depth=None—a larger forest of fully grown trees gave the strongest generalization on cross-validation.
+
+### Performance improvement
+
+##### Baseline model (default n_estimators=100, max_depth=10):
+
+Test R² ≈ 0.9915
+Test RMSE ≈ 31.99
+
+##### Baseline model  with additional features
+Test R² increased to ≈ 0.9928
+Test RMSE decreased to ≈ 31.20
+
+##### Final tuned model (n_estimators=200, max_depth=None):
+Test R²: 0.9961
+Test RMSE: 21.79
+
+By growing a larger forest and allowing deeper splits, I cut RMSE by over 10 points (a ≈32% reduction) and boosted R² by ~0.0046—demonstrating that the tuned model captures both the linear macronutrient contributions and the more nuanced complexity signals much more precisely.
+
+
+## Fairness Analysis
+
+
+
+
+
 
 
 
