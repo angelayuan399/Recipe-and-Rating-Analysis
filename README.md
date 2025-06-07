@@ -61,39 +61,6 @@ The **recipes** dataset had 83,782 rows(recipes) and 12 columns.  The relevant c
   </tbody>
 </table>
 
-<!-- Interactions table -->
-<table>
-  <thead>
-    <tr>
-      <th>Column Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>user_id</code></td>
-      <td>Unique ID of the user who rated/reviewed (integer)</td>
-    </tr>
-    <tr>
-      <td><code>recipe_id</code></td>
-      <td>ID of the recipe being rated (matches <code>id</code> in <code>RAW_recipes.csv</code>)</td>
-    </tr>
-    <tr>
-      <td><code>date</code></td>
-      <td>Date of the interaction (<code>YYYY-MM-DD</code>)</td>
-    </tr>
-    <tr>
-      <td><code>rating</code></td>
-      <td>Numeric rating (1 to 5 stars)</td>
-    </tr>
-    <tr>
-      <td><code>review</code></td>
-      <td>Optional text review (string; sometimes blank)</td>
-    </tr>
-  </tbody>
-</table>
-
-
 
 
 The **interactions** dataset had 731,927 rows (reviews/ratings) and 5 columns. The columns include: 
@@ -104,6 +71,7 @@ The **interactions** dataset had 731,927 rows (reviews/ratings) and 5 columns. T
 | **`date`**      | Date of the interaction (YYYY‐MM‐DD)                             |
 | **`rating`**    | Numeric rating (1 to 5 stars)                                    |
 | **`review`**    | Optional text review (string; sometimes blank)                   |
+
 
 
 Merging them yields a combined dataset of 234,429 rows × 26 columns. In order to aid the exploration of my project question, I parsed the nutrition column and created separate numeric fields:
