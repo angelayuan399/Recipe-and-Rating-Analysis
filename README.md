@@ -5,25 +5,17 @@ Final project for DSC 80
 On Food.com, thousands of recipes come paired with detailed nutrition facts (calories, fat, sugar, sodium, protein, saturated fat, carbohydrates) and user ratings. In my project, I ask: **“Is there a correlation between a recipe’s carbohydrate content (carbs) and its total calories?”** Readers who care about meal planning, weight management, or simple nutritional trade‐offs will find this especially useful—if high‐carb recipes reliably drive up calorie counts, then lowering carbs may be an effective way to reduce calories without digging deeper into ingredient lists.
 
 The **recipes** dataset had 83,782 rows(recipes) and 12 columns.  The relevant columns include:
+| Column Name         | Description                                                                                                                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`id`**            | Unique identifier for each recipe (integer)                                                                                                                                                |
+| **`contributor_id`**| User ID who submitted this recipe                                                                                                                                                                                                 |
+| **`name`**          | Recipe name (string)                                                                                                                                                                                                              |
+| **`minutes`**       | Preparation time in minutes (integer)                                                                                                                                                                                             |
+| **`n_steps`**       | Number of steps in the recipe instructions (integer)                                                                                                                                                                              |
+| **`submitted`**     | Date when the recipe was submitted to Food.com (`YYYY-MM-DD` format)                                                                                                                                                              |
+| **`tags`**          | Comma-separated list of Food.com tags (e.g. `dessert`, `vegetarian`, `30-minute meals`) (string)                                                                                                                                  |
+| **`nutrition`**     | A bracketed list with 7 values:<br>1. calories (kcal)<br>2. total_fat (% DV)<br>3. sugar (% DV)<br>4. sodium (% DV)<br>5. protein (% DV)<br>6. saturated_fat (% DV)<br>7. carbohydrates (% DV)<br>Format: `[250, 10, 25, 15, 20, 5, 35]` |
 
-| Column Name     | Description                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------ |
-| **`id`**        | Unique identifier for each recipe (integer)                                                      |
-| **`contributer id`**        | User ID who submitted this recipe                                                    |
-| **`name`**      | Recipe name (string)                                                                             |
-| **`minutes`**   | Preparation time in minutes (integer)                                                            |
-| **`n_steps`**   | Number of steps in the recipe instructions (integer)                                             |
-| **`submitted`** | Date when the recipe was submitted to Food.com (YYYY‐MM‐DD format)                               |
-| **`tags`**      | Comma‐separated list of Food.com tags (e.g. “dessert,” “vegetarian,” “30‐minute meals”) (string) |
-| **`nutrition`** | A bracketed list with 7 values:                                                                  |
-                 1. calories (kcal)  
-                 2. total_fat (as % of daily value)  
-                 3. sugar (as % DV)  
-                 4. sodium (as % DV)  
-                 5. protein (as % DV)  
-                 6. saturated_fat (as % DV)  
-                 7. carbohydrates (as % DV)  
-               Format example: `[250, 10, 25, 15, 20, 5, 35]  `
 
 
 
