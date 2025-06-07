@@ -280,6 +280,18 @@ The residuals‐vs-predicted plot shows errors randomly scattered around zero wi
 
 ## Fairness Analysis
 
+In order to probe whether the final Random Forest model treats “long” recipes (those requiring more time than the median prep-time of the test set) worse than “short” recipes (those at or below the median), I compared the root-mean-squared error (RMSE) across these two groups.  I denote RMSE on the long-prep recipes by RMSE_long and on the short-prep recipes by RMSE_shortₜ, and define theobserved test statistic simply as
+
+#### Test Stat= RMSE_long-RMSE_short
+Found that RMSE_long≈ 87.05 and RMSE_short ≈ 94.33, giving T_obs ≈ –7.28.
+
+To see whether such a difference could arise by chance, I performed a one-sided permutation test (B = 5 000 permutations).  In each permutation, I randomly reassigned which recipes were “long” versus “short” (keeping the same counts), recomputed RMSE for each permuted group, and recorded the difference RMSE_long – RMSE_short.  The p-value is then the fraction of those permuted differences at least as large as our observed T_obs.
+
+The resulting null distribution of T is centered near zero, and only 1 in 5,001 permutations (p ≈ 0.999) produced a difference ≥ –7.28.  In other words, the observed negative T_obs, a slight advantage on long recipes, is entirely consistent with chance fluctuations.
+
+Because this p-value is far above any conventional α=0.05 threshold, we fail to reject the null hypothesis that the model’s error is equal on long and short recipes.  In practical terms, there is no evidence that the final model performs worse on longer-prep recipes than on shorter ones.
+
+
 
 
 
