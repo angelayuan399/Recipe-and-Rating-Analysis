@@ -251,10 +251,6 @@ Best found: n_estimators=200, max_depth=None—a larger forest of fully grown tr
 Test R² ≈ 0.9915
 Test RMSE ≈ 31.99
 
-##### Baseline model  with additional features
-Test R² increased to ≈ 0.9928
-Test RMSE decreased to ≈ 31.20
-
 ##### Final tuned model (n_estimators=200, max_depth=None):
 Test R²: 0.9961
 Test RMSE: 21.79
