@@ -170,5 +170,33 @@ Because p = 0.008 < 0.05, we **reject H₀** at the 5% significance level. There
 Because p = 0.471 > 0.05, we **fail to reject H₀** at the 5% level. There is no evidence that the missingness of `review` depends on the recipe’s preparation time (`minutes`). In other words, whether or not a recipe has a review appears independent of how long it takes to prepare.
 
 
+## Hypothesis testing
+
+I want to explore whether recipes with above-average carbohydrate content also tend to have more calories than those with below-average carbs. Here, “high-carb” means any recipe whose carbs value exceeds the overall mean carb level (≈11.99 g); everything else is “low-carb.”
+Null hypothesis (H₀): The calorie count distribution for recipes with carbs ≤ threshold is the same as that for recipes with carbs > threshold.
+
+Alternative hypothesis (H₁, one‐sided): Recipes with carbs ≤ threshold have lower calories than recipes with carbs > threshold.
+Test statistic:the observed gap in mean of high carb group and and low carb group.
+Significance level: α=0.05
+
+I chose a permutation test because I have no information about the underlying population distribution of recipe calories, and I want to know whether the observed difference in means could plausibly occur by chance if there really were no carb→calorie effect. By shuffling the calorie values across the two groups, the permutation test builds a null distribution directly from my data without relying on parametric assumptions.
+
+To run the test, I first split the recipes into two groups:
+High-carb: recipes with carbs > mean(carbs) (≈11.99 g)
+Low-carb: recipes with carbs ≤ mean(carbs)
+
+The observed statistic was 329.413 calories (mean calories_high – mean calories_low). I then performed 2,000 permutations, each time randomly shuffling the calories array and recomputing the mean-difference. This yielded a one-sided p-value < 0.001.
+<iframe
+  src="assets/carb_calorie_permutation.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Since the p-value (<0.001) is below my significance threshold (0.05), I reject the null hypothesis. The data provide strong evidence that high-carb recipes tend to have higher average calories than low-carb recipes. A likely reason is that ingredients boosting carbohydrate content—such as sugars, flours, or starches—also raise total caloric density. Because this analysis is observational (we did not randomize recipes), it demonstrates an association rather than definitive causation.
+
+
+## Framing the Problem
+
 
 
