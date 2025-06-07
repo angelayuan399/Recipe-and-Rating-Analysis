@@ -1,3 +1,6 @@
-remote_theme: pages-themes/merlot@v0.2.0
+# Use a remote theme from GitHub Pages
+remote_theme: "pages-themes/merlot@v0.2.0"
+
+# Enable the Jekyll Remote Theme plugin
 plugins:
-  - jekyll-remote-theme 
+  - jekyll-remote-theme
