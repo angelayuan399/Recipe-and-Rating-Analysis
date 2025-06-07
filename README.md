@@ -53,9 +53,8 @@ Merging them yields a combined dataset of 234,429 rows × 26 columns. In order t
 
 From the dataset, the most two relevant columns are calories (Total calories (kcal) per serving) and carbs (Carbohydrates as PDV).
 
-
-## Data Cleaning
-
+## Data Cleaning and Exloratory Data Analysis
+### Data Cleaning
 #### 1. Merging Datasets
 The datasets recipes and interactions were left merged on id and recipe_id. This step allows analysis of how recipe attributes relate to user feedback.
 #### 2. Replace 0's with NaN
@@ -67,9 +66,9 @@ This allows for easier analaysis between individual components fo the nutrition 
 #### 5. Remove Outliers
 I removed recipes with calories that were 3,000 calories or over. The recommended daily calorie intake for adults can range from 1,600 to 3,000, with the standard reference point being 2,000 calories. 
 #### 6. Checked for missing values
-I checked if there were missing values in the calories and carbs column. 
+I checked if there were missing values in the calories and carbs columns verify data completeness. 
 
-### The table below shows the first five unique recipes from the cleaned DataFrame, limited to the relevant columns. 
+#### The table below shows the first five unique recipes from the cleaned DataFrame, limited to the relevant columns. 
 | name                               | id     | contributor_id | user_id  | n_steps | n_ingredients | avg_rating | calories | carbs | total_fat | sugar | sodium | protein | saturated_fat |
 |------------------------------------|--------|----------------|----------|---------|---------------|------------|----------|-------|-----------|-------|--------|---------|---------------|
 | 1 brownies in the world best ever  | 333281 | 985201         | 386585   | 10      | 9             | 4.0        | 138.4    | 6.0   | 10.0      | 50.0  | 3.0    | 3.0     | 19.0          |
@@ -79,8 +78,7 @@ I checked if there were missing values in the calories and carbs column.
 | 2000 meatloaf                      | 475785 | 2202916        | 2204364  | 17      | 13            | 5.0        | 267.0    | 2.0   | 30.0      | 12.0  | 12.0   | 29.0    | 48.0          |
 
 
-
-
+### Univariate Analyses
 
 
 
