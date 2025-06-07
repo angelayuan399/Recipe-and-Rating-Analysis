@@ -261,7 +261,7 @@ Test RMSE: 21.79
 
 By growing a larger forest and allowing deeper splits, I cut RMSE by over 10 points (a ≈32% reduction) and boosted R² by ~0.0046—demonstrating that the tuned model captures both the linear macronutrient contributions and the more nuanced complexity signals much more precisely.
 
-<img src="assets/calories_scatter.png" alt="True vs Predicted Calories" width="600"/>
+<img src="assets/predicted_scatter.png" alt="True vs Predicted Calories" width="600"/>
 
 <img src="assets/resid.png" alt="Residuals vs Predicted Calories" width="600"/>
 
