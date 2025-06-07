@@ -144,5 +144,31 @@ I believe the rating column is NMAR. In the table, 14,877 recipes have no record
 * **Observed statistic:** TVD = 0.4617.
 * **Null (permutation) distribution:** TVDs ranged from about 0.3944 to 0.4701 when `review` labels were shuffled.
 * **P-value:** 0.0080 (only 0.8% of null permutations produced a TVD ≥ 0.4617).
-Because p = 0.008 < 0.05, we **reject H₀** at the 5% significance level. There is strong evidence that the distribution of `review` values differs by `contributor_id`. In the context of missingness, this tells us that whether a given recipe has a review is not completely random but is dependent on who the contributor is consistent with a Missing At Random (MAR) mechanism conditioned on contributor identity. Perhaps some contributors are diligent reviewers while others habitually skip it
+Because p = 0.008 < 0.05, we **reject H₀** at the 5% significance level. There is strong evidence that the distribution of `review` values differs by `contributor_id`. In the context of missingness, this tells us that whether a given recipe has a review is not completely random but is dependent on who the contributor is consistent with a Missing At Random (MAR) mechanism conditioned on contributor identity. Perhaps some contributors are diligent reviewers while others habitually skip it.
+
+
+
+**Minutes vs Review**
+
+* **Null hypothesis (H₀):** The total variation distance (TVD) between the distribution of `review`‐missingness across different `minutes`‐bins is what we’d see by chance—that is, `review` is independent of `minutes`.
+* **Alternative hypothesis (H₁):** The TVD is larger than expected under independence, the probability of a missing `review` depends on `minutes`.
+
+<iframe
+  src="assets/rev_min_tvd.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+**Interpretation of results**
+
+* **Observed TVD:** 0.2576
+* **Null (permutation) distribution:** TVDs ranged from about 0.1627 to 0.3596 when I shuffled `review` labels.
+* **P-value:** 0.4710 (47.1% of null permutations produced a TVD ≥ 0.2576).
+
+Because p = 0.471 > 0.05, we **fail to reject H₀** at the 5% level. There is no evidence that the missingness of `review` depends on the recipe’s preparation time (`minutes`). In other words, whether or not a recipe has a review appears independent of how long it takes to prepare.
+
+
+
 
