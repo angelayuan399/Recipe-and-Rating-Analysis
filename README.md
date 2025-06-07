@@ -5,73 +5,28 @@ Final project for DSC 80
 On Food.com, thousands of recipes come paired with detailed nutrition facts (calories, fat, sugar, sodium, protein, saturated fat, carbohydrates) and user ratings. In my project, I ask: **“Is there a correlation between a recipe’s carbohydrate content (carbs) and its total calories?”** Readers who care about meal planning, weight management, or simple nutritional trade‐offs will find this especially useful—if high‐carb recipes reliably drive up calorie counts, then lowering carbs may be an effective way to reduce calories without digging deeper into ingredient lists.
 
 The **recipes** dataset had 83,782 rows(recipes) and 12 columns.  The relevant columns include:
-<!-- Recipes table -->
-<table>
-  <thead>
-    <tr>
-      <th>Column Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>Unique identifier for each recipe (integer)</td>
-    </tr>
-    <tr>
-      <td><code>contributor_id</code></td>
-      <td>User ID who submitted this recipe</td>
-    </tr>
-    <tr>
-      <td><code>name</code></td>
-      <td>Recipe name (string)</td>
-    </tr>
-    <tr>
-      <td><code>minutes</code></td>
-      <td>Preparation time in minutes (integer)</td>
-    </tr>
-    <tr>
-      <td><code>n_steps</code></td>
-      <td>Number of steps in the recipe instructions (integer)</td>
-    </tr>
-    <tr>
-      <td><code>submitted</code></td>
-      <td>Date when the recipe was submitted to Food.com (<code>YYYY-MM-DD</code> format)</td>
-    </tr>
-    <tr>
-      <td><code>tags</code></td>
-      <td>Comma-separated list of Food.com tags (e.g. <code>dessert</code>, <code>vegetarian</code>, <code>30-minute meals</code>) (string)</td>
-    </tr>
-    <tr>
-      <td><code>nutrition</code></td>
-      <td>
-        A bracketed list with 7 values:
-        <ol style="margin: 0 0 0 1.2em; padding: 0;">
-          <li>calories (kcal)</li>
-          <li>total_fat (% DV)</li>
-          <li>sugar (% DV)</li>
-          <li>sodium (% DV)</li>
-          <li>protein (% DV)</li>
-          <li>saturated_fat (% DV)</li>
-          <li>carbohydrates (% DV)</li>
-        </ol>
-        Format example: <code>[250, 10, 25, 15, 20, 5, 35]</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+The **recipes** dataset contains the following fields:
 
+* **id**: a unique integer identifier for each recipe.
+* **contributor\_id**: the integer user-ID of the person who submitted the recipe.
+* **name**: the recipe’s title (a string).
+* **minutes**: total preparation time in minutes (integer).
+* **n\_steps**: the number of instruction steps (integer).
+* **submitted**: the date the recipe was posted on Food.com, in `YYYY-MM-DD` format.
+* **tags**: a comma-separated list of Food.com tags (e.g. `dessert`, `vegetarian`, `30-minute meals`) stored as a string.
+* **nutrition**: a bracketed list of seven values—calories (kcal), total\_fat (% DV), sugar (% DV), sodium (% DV), protein (% DV), saturated\_fat (% DV), and carbohydrates (% DV)—for example:
 
+  ```
+  [250, 10, 25, 15, 20, 5, 35]
+  ```
 
 The **interactions** dataset had 731,927 rows (reviews/ratings) and 5 columns. The columns include: 
-| Column Name     | Description                                                      |
-| --------------- | ---------------------------------------------------------------- |
-| **`user_id`**   | Unique ID of the user who rated/reviewed (integer)               |
-| **`recipe_id`** | ID of the recipe being rated (matches `id` in `RAW_recipes.csv`) |
-| **`date`**      | Date of the interaction (YYYY‐MM‐DD)                             |
-| **`rating`**    | Numeric rating (1 to 5 stars)                                    |
-| **`review`**    | Optional text review (string; sometimes blank)                   |
 
+* **user\_id**: unique integer ID of the user who submitted the rating or review.
+* **recipe\_id**: integer ID of the recipe being rated (corresponds to `id` in the recipes file).
+* **date**: date of the interaction in `YYYY-MM-DD` format.
+* **rating**: numeric star rating (1–5).
+* **review**: optional free-text comment (string), which may be blank.
 
 
 Merging them yields a combined dataset of 234,429 rows × 26 columns. In order to aid the exploration of my project question, I parsed the nutrition column and created separate numeric fields:
