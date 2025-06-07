@@ -73,12 +73,55 @@ I checked if there were missing values in the calories and carbs columns verify 
 
 
 ### Univariate Analyses
+I wanted to understand how extreme calorie values affect the overall distribution, so I split the data at the 2,000-calorie guideline and plotted two histograms.
+In the first histogram (0–2,000 calories), I observe a pronounced right skew: the highest-frequency bin—around 200 cal—exceeds 2,400 recipes, and most entries lie between roughly 100 and 500 cal before tapering off toward the upper limit.
+
+
 <iframe
   src="assets/calorie_below2000.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+In the second histogram (>2,000 calories), the distribution remains right-skewed but at a much smaller scale: the peak bin (approximately 2 050 cal) contains just over 200 recipes, and the tail extends toward 3 000 cal, highlighting a relatively rare subset of ultra-high-calorie dishes.
+
+<iframe
+  src="assets/calorie_above2000.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+## Bivariate Analysis
+I plotted calories against carbohydrate content for recipes with up to 2,000 calories. The scatter reveals a strong positive relationship—dishes with more calories tend to have higher carb counts, though the spread widens as calorie values approach the upper limit.
+<iframe
+  src="assets/bivariate_below.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+## Interesting Aggregates
+This pivot shows average carbs for each calorie range broken out by rating bin. For example, in the 300–400 calorie recipes, dishes rated 4–5 stars average about 10.96 g of carbs, while lower-rated ones average slightly more. It helps us see how carb content shifts not only with overall calories but also with user satisfaction.
+
+
+| calorie_bin   |       <2 |      2–3 |      3–4 |      4–5 |
+|---------------|----------|----------|----------|----------|
+| 0-100         |  2.11051 |  2.10983 |  2.15757 |  2.1376  |
+| 100-200       |  6.15347 |  5.67467 |  5.54978 |  5.50468 |
+| 200-300       |  9.37795 |  8.59285 |  8.37505 |  8.30763 |
+| 300-400       | 11.6703  | 11.1262  | 11.1308  | 10.9635  |
+| 400-500       | 14.4871  | 13.8064  | 13.4241  | 13.1801  |
+| 500-600       | 17.3118  | 16.9733  | 16.1049  | 15.7616  |
+| 600-800       | 20.2252  | 19.5378  | 19.9573  | 18.7266  |
+| 800-1000      | 24.25    | 24.7918  | 23.8127  | 23.5696  |
+| 1000+         | 52.3731  | 49.0117  | 47.2284  | 49.7045  |
+
+One clear trend is that average carbs rise steadily with each higher calorie bin—from just over 2 g in 0–100 cal recipes up to ~24 g in 800–1 000 cal recipes (and ~50 g in the 1 000+ cal “ultra-rich” bin).
+
+A second, subtler pattern is that within each calorie range, recipes with higher user ratings tend to have slightly lower carb averages. For example in the 300–400 cal bin, 1–2 star recipes average ~11.67 g of carbs, whereas 4–5 star recipes average ~10.96 g, suggesting that, all else equal, leaner-carb dishes get rated more favorably.
 
 
 
