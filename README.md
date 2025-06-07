@@ -79,6 +79,12 @@ I checked if there were missing values in the calories and carbs columns verify 
 
 
 ### Univariate Analyses
+<iframe
+  src="assets/calorie_below2000.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 
