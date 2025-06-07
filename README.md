@@ -1,6 +1,5 @@
 # Recipe-and-Rating-Analysis
 Final project for DSC 80
-hi
 
 ## Introduction
 On Food.com, thousands of recipes come paired with detailed nutrition facts (calories, fat, sugar, sodium, protein, saturated fat, carbohydrates) and user ratings. In my project, I ask: **“Is there a correlation between a recipe’s carbohydrate content (carbs) and its total calories?”** Readers who care about meal planning, weight management, or simple nutritional trade‐offs will find this especially useful—if high‐carb recipes reliably drive up calorie counts, then lowering carbs may be an effective way to reduce calories without digging deeper into ingredient lists.
@@ -125,6 +124,25 @@ A second, subtler pattern is that within each calorie range, recipes with higher
 
 ## Assessment of Missingness
 ### NMAR Analysis
-I believe the rating column is NMAR. In the table, 14 877 recipes have no recorded rating—and that absence isn’t independent of the true rating value. Users self-select whether to rate a recipe, and they’re far more likely to rate dishes they loved or hated than those they felt neutral about. In other words, the probability a rating is missing depends on the unobserved rating itself.
+I believe the rating column is NMAR. In the table, 14,877 recipes have no recorded rating—and that absence isn’t independent of the true rating value. Users self-select whether to rate a recipe, and they’re far more likely to rate dishes they loved or hated than those they felt neutral about. In other words, the probability a rating is missing depends on the unobserved rating itself.
 
+## Missing Dependency
+
+**Contributer_ID vs Review**
+* **Null hypothesis (H₀):** The total variation distance (TVD) between the distribution of `review`-values across different `contributor_id` groups is no larger than would be expected by chance—in other words, `review` is independent of `contributor_id`.
+* **Alternative hypothesis (H₁):** The TVD is larger than expected under independence—that is, the distribution of `review` does depend on `contributor_id`.
+
+<iframe
+  src="assets/rev_contributor_tvd.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+**Interpretation of results**
+* **Observed statistic:** TVD = 0.4617.
+* **Null (permutation) distribution:** TVDs ranged from about 0.3944 to 0.4701 when `review` labels were shuffled.
+* **P-value:** 0.0080 (only 0.8% of null permutations produced a TVD ≥ 0.4617).
+Because p = 0.008 < 0.05, we **reject H₀** at the 5% significance level. There is strong evidence that the distribution of `review` values differs by `contributor_id`. In the context of missingness, this tells us that whether a given recipe has a review is not completely random but is dependent on who the contributor is consistent with a Missing At Random (MAR) mechanism conditioned on contributor identity. Perhaps some contributors are diligent reviewers while others habitually skip it
 
