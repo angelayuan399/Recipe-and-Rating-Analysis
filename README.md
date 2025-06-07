@@ -261,6 +261,22 @@ Test RMSE: 21.79
 
 By growing a larger forest and allowing deeper splits, I cut RMSE by over 10 points (a ≈32% reduction) and boosted R² by ~0.0046—demonstrating that the tuned model captures both the linear macronutrient contributions and the more nuanced complexity signals much more precisely.
 
+<iframe
+  src="assets/pred_scatter.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/resid.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The residuals‐vs-predicted plot shows errors randomly scattered around zero with no obvious pattern or fan-shaped spread, suggesting the model is unbiased and its variance is roughly constant. The true-vs-predicted plot tightly hugs the 45° line across the full calorie range, indicating high R² and low RMSE—your model captures most of the variation in recipe calories, with only a few small under- or over-predictions at the extremes.
+
 
 ## Fairness Analysis
 
