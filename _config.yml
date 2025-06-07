@@ -4,3 +4,4 @@ remote_theme: "pages-themes/merlot@v0.2.0"
 # Enable the Jekyll Remote Theme plugin
 plugins:
   - jekyll-remote-theme
+
