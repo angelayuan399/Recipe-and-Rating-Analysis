@@ -69,13 +69,15 @@ I removed recipes with calories that were 3,000 calories or over. The recommende
 I checked if there were missing values in the calories and carbs columns verify data completeness. 
 
 #### The table below shows the first five unique recipes from the cleaned DataFrame, limited to the relevant columns. 
-| name                               | id     | contributor_id | user_id  | n_steps | n_ingredients | avg_rating | calories | carbs | total_fat | sugar | sodium | protein | saturated_fat |
-|------------------------------------|--------|----------------|----------|---------|---------------|------------|----------|-------|-----------|-------|--------|---------|---------------|
-| 1 brownies in the world best ever  | 333281 | 985201         | 386585   | 10      | 9             | 4.0        | 138.4    | 6.0   | 10.0      | 50.0  | 3.0    | 3.0     | 19.0          |
-| 1 in canada chocolate chip cookies | 453467 | 1848091        | 424680   | 12      | 11            | 5.0        | 595.1    | 26.0  | 46.0      | 211.0 | 22.0   | 13.0    | 51.0          |
-| 412 broccoli casserole             | 306168 | 50969          | 29782    | 6       | 9             | 5.0        | 194.8    | 3.0   | 20.0      | 6.0   | 32.0   | 22.0    | 36.0          |
-| millionaire pound cake             | 286009 | 461724         | 813055   | 7       | 7             | 5.0        | 878.3    | 39.0  | 63.0      | 326.0 | 13.0   | 20.0    | 123.0         |
-| 2000 meatloaf                      | 475785 | 2202916        | 2204364  | 17      | 13            | 5.0        | 267.0    | 2.0   | 30.0      | 12.0  | 12.0   | 29.0    | 48.0          |
+#### The table below shows the first five unique recipes from the cleaned DataFrame:
+
+| name                            | id     | contributor_id | user_id | n_steps | n_ingredients | avg_rating | calories | carbs | total_fat | sugar | sodium | protein | saturated_fat |
+|---------------------------------|--------|---------------:|--------:|--------:|--------------:|-----------:|---------:|------:|----------:|------:|-------:|--------:|--------------:|
+| brownies in the world best ever | 333281 |        985201  | 386585  | 10      | 9             | 4.0        | 138.4    | 6.0   | 10.0      | 50.0  | 3.0    | 3.0     | 19.0          |
+| 1 in canada chocolate chip…     | 453467 |     1,848,091  | 424680  | 12      | 11            | 5.0        | 595.1    | 26.0  | 46.0      | 211.0 | 22.0   | 13.0    | 51.0          |
+| broccoli casserole              | 306168 |       50,969   | 29782   | 6       | 9             | 5.0        | 194.8    | 3.0   | 20.0      | 6.0   | 32.0   | 22.0    | 36.0          |
+| millionaire pound cake          | 286009 |      461,724   | 813055  | 7       | 7             | 5.0        | 878.3    | 39.0  | 63.0      | 326.0 | 13.0   | 20.0    | 123.0         |
+| 2000 meatloaf                   | 475785 |    2,202,916   | 2204364 | 17      | 13            | 5.0        | 267.0    | 2.0   | 30.0      | 12.0  | 12.0   | 29.0    | 48.0          |
 
 
 ### Univariate Analyses
